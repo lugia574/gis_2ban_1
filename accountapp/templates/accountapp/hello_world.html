@@ -9,6 +9,7 @@
         <form action="/account/hello_world/" method="post">
             {% csrf_token %}
 {#   {% csrf_token %}  이걸 넣어야 정상적으로 보안? 뭐 그럼           #}
+            <input type="text" name = "input">
             <input type="submit" class="btn btn-dark rounded-pill px-5">
         </form>
 
