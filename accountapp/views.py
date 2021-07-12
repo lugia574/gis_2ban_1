@@ -1,8 +1,12 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
+from django.views.generic import CreateView
+
 from accountapp.models import HelloWorld
 
 
@@ -24,3 +28,10 @@ def hello_world (request):
 
         data_list = HelloWorld.objects.all()  # 모든 객체들을 가져 온다
         return render(request, 'accountapp/hello_world.html', context={'data_list': data_list})
+
+
+class AccountCreateView(CreateView):
+    model = User # 유저 장고 디폴트 모델
+    form_class = UserCreationForm # 회원가입 폼
+    success_url = reverse_lazy('accountapp:hello_world') # 저장 되어 있다가 호출 될때 값을 줘야 해서 reverse 랑 방식이 다름 그래서 _lazy를 쓰는거야
+    templates = 'accountapp/create.html'
