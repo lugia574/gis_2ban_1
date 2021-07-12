@@ -16,7 +16,10 @@ def hello_world (request):
         new_data.text = temp
         new_data.save()
 
+        data_list = HelloWorld.objects.all() # 모든 객체들을 가져 온다
 
-        return render(request, 'accountapp/hello_world.html', context={'text': new_data})
+        return render(request, 'accountapp/hello_world.html', context={'data_list': data_list})
     else:
-        return render(request, 'accountapp/hello_world.html', context={'text': 'GET METHOD!'})
+
+        data_list = HelloWorld.objects.all()  # 모든 객체들을 가져 온다
+        return render(request, 'accountapp/hello_world.html', context={'data_list': data_list})
