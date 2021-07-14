@@ -34,4 +34,4 @@ class AccountCreateView(CreateView):
     model = User # 유저 장고 디폴트 모델
     form_class = UserCreationForm # 회원가입 폼
     success_url = reverse_lazy('accountapp:hello_world') # 저장 되어 있다가 호출 될때 값을 줘야 해서 reverse 랑 방식이 다름 그래서 _lazy를 쓰는거야
-    templates = 'accountapp/create.html'
+    template_name = 'accountapp/create.html'
