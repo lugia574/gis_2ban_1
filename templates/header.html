@@ -21,8 +21,13 @@
 
 
             {% else %}
-            <span>nav1</span>
-            <span>nav2</span>
+            <span>
+                <a href="{% url 'accountapp:detail' pk=user.pk%}">
+                Mypage</a>
+            </span>
+            <span> <a href="{% url 'accountapp:logout' %}">
+                Logout</a>
+            </span>
             {% endif %}
 
         </div>
